@@ -10,8 +10,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'annotate'
-  gem 'bcrypt-ruby'
 end
+
+gem 'bcrypt-ruby'
 
 group :production do
   gem 'pg'
