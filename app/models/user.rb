@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase}
   validates :password, presence: true, 
                        length: { minimum: 6}
-  has_secure_password
   validates :password_confirmation, presence: true
+
+  has_secure_password
 end

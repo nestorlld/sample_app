@@ -47,6 +47,7 @@ group :test do
   gem 'capybara'
   gem 'rb-inotify'
   gem 'libnotify'
+  gem 'factory_girl_rails'
 end
 
 # Use ActiveModel has_secure_password
