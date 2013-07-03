@@ -18,12 +18,12 @@ describe User do
   
   it {should respond_to(:name) }
   it {should respond_to(:email) }
-  it {should be_valid}
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
-  
+  it {should be_valid}
   #invalid user test
   describe "when name is not present" do 
     before { @user.name = " "} #sets to invalid user
@@ -41,7 +41,7 @@ describe User do
   end
   
   #test for email format validation
- describe "when email format is invalid" do
+   describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                      foo@bar_baz.com foo@bar+baz.com]
@@ -49,8 +49,8 @@ describe User do
         @user.email = invalid_address
         @user.should_not be_valid
       end      
+      end
     end
-  end
 
   describe "when email format is valid" do
     it "should be valid" do
@@ -114,6 +114,10 @@ describe User do
   it { should be_invalid }
   end
   
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
 
   
 end
